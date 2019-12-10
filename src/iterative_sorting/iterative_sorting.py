@@ -1,5 +1,7 @@
 def insertion_sort(arr):
-    """Time Complexity: Θ(n^2)"""
+    """
+    Avg Time Complexity: Θ(n^2)
+    """
     # 1. Separate the first element from the rest of the array
     # Think about it as a sorted list of one element.
     # 2. For all other indices, beginning with [1]:
@@ -21,7 +23,9 @@ def insertion_sort(arr):
 
 # TODO: Complete the selection_sort function below
 def selection_sort(arr):
-    """Time Complexity: Θ(n^2)"""
+    """
+    Avg Time Complexity: Θ(n^2)
+    """
     # loop through n-1 elements
     for i in range(len(arr)-1):
         smallest_index = i
@@ -38,7 +42,9 @@ def selection_sort(arr):
 
 # TODO:  implement the bubble_sort function below
 def bubble_sort(arr):
-    """Time Complexity: Θ(n^2)"""
+    """
+    Avg Time Complexity: Θ(n^2)
+    """
     n = len(arr)
     swaps = True
     while n > 0 and swaps:
@@ -58,8 +64,23 @@ def bubble_sort(arr):
 
 # STRETCH: implement the Count Sort function below
 def count_sort(arr, maximum=-1):
-    """Time Complexity: Θ(n+k)"""
-    if min(arr) < 0 and len(arr) > 0:
-        return "Error, negative numbers not allowed in Count Sort"
-    else:
-        return sorted(arr)
+    """
+    Avg Time Complexity: Θ(n+k)
+    """
+    # Return empty list if arr is empty
+    if len(arr) < 1:
+        return []
+    # Create count list with length equal to the max of arr
+    count = [0]*(max(arr)+1)
+    # Count each element in arr and add count to the index
+    for i in range(len(arr)):
+        if arr[i] > -1:
+            count[arr[i]] += 1
+        # Count sort does not work with negative numbers
+        else:
+            return "Error, negative numbers not allowed in Count Sort"
+    # Create new list base on counts values
+    new_arr = []
+    for i in range(len(count)):
+        new_arr += [i]*count[i]
+    return new_arr
