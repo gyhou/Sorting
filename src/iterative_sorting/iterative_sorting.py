@@ -66,6 +66,7 @@ def bubble_sort(arr):
 def count_sort(arr, maximum=-1):
     """
     Avg Time Complexity: Θ(n+k)
+    k is the maximum value of the non-negative key values
     """
     # Return empty list if arr is empty
     if len(arr) < 1:
@@ -73,9 +74,9 @@ def count_sort(arr, maximum=-1):
     # Create count list with length equal to the max of arr
     count = [0]*(max(arr)+1)
     # Count each element in arr and add count to the index
-    for i in range(len(arr)):
-        if arr[i] > -1:
-            count[arr[i]] += 1
+    for i in arr:
+        if i > -1:
+            count[i] += 1
         # Count sort does not work with negative numbers
         else:
             return "Error, negative numbers not allowed in Count Sort"
